@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161107121435) do
+ActiveRecord::Schema.define(version: 20161107151207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,19 @@ ActiveRecord::Schema.define(version: 20161107121435) do
     t.decimal  "city_delimiter"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+  end
+
+  create_table "points", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "vehicle_id"
+    t.uuid     "city_id"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.integer  "timestamp"
+    t.integer  "current_heading"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["city_id"], name: "index_points_on_city_id", using: :btree
+    t.index ["vehicle_id"], name: "index_points_on_vehicle_id", using: :btree
   end
 
   create_table "vehicles", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
