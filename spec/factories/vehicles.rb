@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :vehicle do
-    type 1
+    vehicle_type 0
   end
 end
