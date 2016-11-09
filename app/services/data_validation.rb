@@ -13,8 +13,8 @@ class DataValidation
     return :coordinates_blank if without_coordinates?
     return :timestamp_blank if without_timestamp?
     return :timestamp_invalid if invalid_timestamp?
-    return :course_blank if without_course?
-    return :course_invalid if invalid_course?
+    return :current_heading_blank if without_current_heading?
+    return :current_heading_invalid if invalid_current_heading?
 
     return :data_ok
   end
@@ -47,15 +47,15 @@ class DataValidation
     !data[:timestamp].is_a?(Integer)
   end
 
-  def without_course?
-    data[:course].blank?
+  def without_current_heading?
+    data[:current_heading].blank?
   end
 
-  def invalid_course?
-    !(data[:course].is_a?(Integer) && valid_course?)
+  def invalid_current_heading?
+    !(data[:current_heading].is_a?(Integer) && valid_current_heading?)
   end
 
-  def valid_course?
-    data[:course].between?(0, 359)
+  def valid_current_heading?
+    data[:current_heading].between?(0, 359)
   end
 end

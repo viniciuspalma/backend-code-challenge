@@ -8,7 +8,7 @@ RSpec.describe DataValidation do
         latitude: 50.0,
         longitude: 50.0,
         timestamp: Time.now.to_i,
-        course: 180
+        current_heading: 180
       }
     end
 
@@ -89,31 +89,31 @@ RSpec.describe DataValidation do
       end
     end
 
-    context 'when has a blank course' do
-      it 'returns course blank message' do
-        data[:course] = ''
-        expect(described_class.(data: data)).to eq(:course_blank)
+    context 'when has a blank current_heading' do
+      it 'returns current_heading blank message' do
+        data[:current_heading] = ''
+        expect(described_class.(data: data)).to eq(:current_heading_blank)
       end
     end
 
-    context 'when has a nil course' do
-      it 'returns course blank message' do
-        data[:course] = nil
-        expect(described_class.(data: data)).to eq(:course_blank)
+    context 'when has a nil current_heading' do
+      it 'returns current_heading blank message' do
+        data[:current_heading] = nil
+        expect(described_class.(data: data)).to eq(:current_heading_blank)
       end
     end
 
-    context 'when has a non numeric course' do
-      it 'returns course invalid message' do
-        data[:course] = 'a'
-        expect(described_class.(data: data)).to eq(:course_invalid)
+    context 'when has a non numeric current_heading' do
+      it 'returns current_heading invalid message' do
+        data[:current_heading] = 'a'
+        expect(described_class.(data: data)).to eq(:current_heading_invalid)
       end
     end
 
-    context 'when has a invalid course' do
-      it 'returns course blank message' do
-        data[:course] = 400
-        expect(described_class.(data: data)).to eq(:course_invalid)
+    context 'when has a invalid current_heading' do
+      it 'returns current_heading blank message' do
+        data[:current_heading] = 400
+        expect(described_class.(data: data)).to eq(:current_heading_invalid)
       end
     end
   end
