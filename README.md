@@ -1,24 +1,25 @@
-# README
+[![Build Status](https://travis-ci.org/viniciuspalma/backend-code-challenge.svg?branch=master)](https://travis-ci.org/viniciuspalma/backend-code-challenge)
+[![Code Climate](https://codeclimate.com/github/viniciuspalma/backend-code-challenge/badges/gpa.svg)](https://codeclimate.com/github/viniciuspalma/backend-code-challenge)
+[![Test Coverage](https://codeclimate.com/github/viniciuspalma/backend-code-challenge/badges/coverage.svg)](https://codeclimate.com/github/viniciuspalma/backend-code-challenge/coverage)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Backend code challenge
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+After you have cloned this repo, run this setup script to set up your machine
+with the necessary dependencies to run and test this app:
 
-* System dependencies
+    cp config/databse.yml.example config/database.yml
+    bundle exec rake db:setup
 
-* Configuration
+It assumes you have a machine equipped with Ruby, Postgres, etc.
 
-* Database creation
+## Docker Compose
 
-* Database initialization
+Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a Compose file to configure your application’s services. All containers declared in docker-compose.yml.
 
-* How to run the test suite
+To up the containers use:
 
-* Services (job queues, cache servers, search engines, etc.)
+    docker-compose up
 
-* Deployment instructions
-
-* ...
+[more informations about docker compose](https://docs.docker.com/compose/overview/)
