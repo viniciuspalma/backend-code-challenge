@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+  - 2.3.0
+install:
+  - bundle install --jobs=3 --retry=3
+before_script:
+  - bundle exec rake
+cache:
+  bundler: true
+addons:
+  code_climate:
+    repo_token: 5fd44b95d6529c8d3fff9b5189caae1af960b66b7eb30b87693932b00a090f2f
