@@ -1,0 +1,83 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# backend-code-challenge
+
+The API is a simple way to store all locations of vehicles in a city.
+
+## Points Collection [/v1/points]
+
+### Create a first Point for a Vehicle [POST]
+
+You may create your own point using this action. It takes a JSON
+object containing a point and informations about the new vehicle. 
+Use the uuid of created vehicle to next points of the same source.
+
++ Request (application/json)
+
+        {
+            "point": {, 
+                "vehicle_type": 0, 
+                "latitude": 52.8815034, 
+                "longitude": -3.8815034,
+                "timestamp": 1478719424,
+                "current_heading": 180 
+            }
+
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "point": {
+                    "id": "6924a87d-fd79-4444-a275-397497febf99",
+                    "vehicle_id": "3ddf7978-697a-4510-b000-c1f8fcb03a56",
+                    "city_id": "5a0fdb32-c617-482f-9ab7-12a5c48a5155",
+                    "latitude": "52.8815034",
+                    "longitude": "-3.8815034",
+                    "timestamp": 1478719424,
+                    "current_heading": 180,
+                    "created_at": "2016-11-11T16:00:30.234Z",
+                    "updated_at": "2016-11-11T16:00:30.234Z"
+                }
+            }
+
+
+### Create a new Point with Vehicle UUID [POST]
+
+You may create your own point using this action. It takes a JSON
+object containing a point and informations about the vehicle.
+
++ Request (application/json)
+
+        {
+            "point": {
+                "vehicle_uuid": "c2d08a7b-ac70-416e-8380-2631d626a473", 
+                "vehicle_type": 0, 
+                "latitude": 52.8815034, 
+                "longitude": -3.8815034,
+                "timestamp": 1478719424,
+                "current_heading": 180 
+            }
+
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "point": {
+                    "id": "6924a87d-fd79-4444-a275-397497febf99",
+                    "vehicle_id": "3ddf7978-697a-4510-b000-c1f8fcb03a56",
+                    "city_id": "5a0fdb32-c617-482f-9ab7-12a5c48a5155",
+                    "latitude": "52.8815034",
+                    "longitude": "-3.8815034",
+                    "timestamp": 1478719424,
+                    "current_heading": 180,
+                    "created_at": "2016-11-11T16:00:30.234Z",
+                    "updated_at": "2016-11-11T16:00:30.234Z"
+                }
+            }
