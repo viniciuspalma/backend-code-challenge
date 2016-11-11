@@ -19,10 +19,10 @@ class EnsureVehicleExists
   attr_reader :vehicle_uuid, :vehicle_type
 
   def create_new_vehicle
-    Vehicle.create(vehicle_type: vehicle_type)
+    Vehicle.create(vehicle_type: vehicle_type.to_i)
   end
 
   def find_vehicle
-    Vehicle.find_by(id: vehicle_uuid, vehicle_type: vehicle_type)
+    Vehicle.find_by(id: vehicle_uuid, vehicle_type: vehicle_type.to_i)
   end
 end

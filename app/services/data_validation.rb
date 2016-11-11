@@ -12,7 +12,6 @@ class DataValidation
     return :vehicle_type_invalid if invalid_vehicle_type_number?
     return :coordinates_blank if without_coordinates?
     return :timestamp_blank if without_timestamp?
-    return :timestamp_invalid if invalid_timestamp?
     return :current_heading_blank if without_current_heading?
     return :current_heading_invalid if invalid_current_heading?
 
@@ -28,13 +27,8 @@ class DataValidation
   end
 
   def invalid_vehicle_type_number?
-    !(data[:vehicle_type].is_a?(Integer) && vehicle_type_number_valid?)
+    !(Vehicle.vehicle_types.values.include?(data[:vehicle_type].to_i))
   end
-
-  def vehicle_type_number_valid?
-    Vehicle.vehicle_types.values.include?(data[:vehicle_type])
-  end
-
   def without_coordinates?
     data[:latitude].blank? || data[:longitude].blank?
   end
@@ -43,19 +37,11 @@ class DataValidation
     data[:timestamp].blank?
   end
 
-  def invalid_timestamp?
-    !data[:timestamp].is_a?(Integer)
-  end
-
   def without_current_heading?
     data[:current_heading].blank?
   end
 
   def invalid_current_heading?
-    !(data[:current_heading].is_a?(Integer) && valid_current_heading?)
-  end
-
-  def valid_current_heading?
-    data[:current_heading].between?(0, 359)
+    !(data[:current_heading].to_i.between?(0, 359))
   end
 end

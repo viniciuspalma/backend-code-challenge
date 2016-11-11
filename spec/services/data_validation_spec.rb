@@ -26,13 +26,6 @@ RSpec.describe DataValidation do
       end
     end
 
-    context 'when has a non numeric vehicle type' do
-      it 'returns vehicle type invalid message' do
-        data[:vehicle_type] = 'a'
-        expect(described_class.(data: data)).to eq(:vehicle_type_invalid)
-      end
-    end
-
     context 'when has a invalid vehicle type' do
       it 'returns vehicle type invalid message' do
         data[:vehicle_type] = 10
@@ -82,13 +75,6 @@ RSpec.describe DataValidation do
       end
     end
 
-    context 'when has a non numeric timestamp' do
-      it 'returns timestamp invalid message' do
-        data[:timestamp] = 'a'
-        expect(described_class.(data: data)).to eq(:timestamp_invalid)
-      end
-    end
-
     context 'when has a blank current_heading' do
       it 'returns current_heading blank message' do
         data[:current_heading] = ''
@@ -102,14 +88,7 @@ RSpec.describe DataValidation do
         expect(described_class.(data: data)).to eq(:current_heading_blank)
       end
     end
-
-    context 'when has a non numeric current_heading' do
-      it 'returns current_heading invalid message' do
-        data[:current_heading] = 'a'
-        expect(described_class.(data: data)).to eq(:current_heading_invalid)
-      end
-    end
-
+    
     context 'when has a invalid current_heading' do
       it 'returns current_heading blank message' do
         data[:current_heading] = 400
